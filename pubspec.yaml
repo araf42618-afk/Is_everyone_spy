@@ -1,14 +1,13 @@
-name: is_everyone_spy
-description: IS EVERYONE SPY HERE? - local multiplayer social deduction game.
-publish_to: "none"
-version: 0.1.0+1
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:is_everyone_spy/main.dart';
 
-environment:
-  sdk: ">=3.0.0 <4.0.0"
+void main() {
+  testWidgets('Home screen shows create and join buttons',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(const SpyApp());
 
-dependencies:
-  flutter:
-    sdk: flutter
-
-flutter:
-  uses-material-design: true
+    expect(find.text('CREATE ROOM'), findsOneWidget);
+    expect(find.text('JOIN ROOM'), findsOneWidget);
+  });
+}
